@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/presentation/pages/home/home_page.dart';
 
 void main() {
   runApp(const QuizApp());
@@ -11,7 +12,7 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: HomePage(),
     );
   }
 }
