@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/widget/common_action_button.dart';
+import 'package:quiz_app/presentation/pages/history/history_page.dart';
 import 'package:quiz_app/presentation/pages/question/question_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -35,7 +36,12 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               CommonActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HistoryPage()),
+                  );
+                },
                 color: Colors.orange,
                 text: 'History',
               ),
