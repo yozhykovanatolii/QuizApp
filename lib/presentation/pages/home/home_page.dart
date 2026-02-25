@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/widget/common_action_button.dart';
+import 'package:quiz_app/presentation/pages/question/question_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,7 +25,12 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               CommonActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const QuestionPage()),
+                  );
+                },
                 text: 'Start',
               ),
               const SizedBox(height: 20),
