@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:quiz_app/core/di/dependencies.dart';
 import 'package:quiz_app/presentation/bloc/quiz/quiz_cubit.dart';
 import 'package:quiz_app/presentation/bloc/result_quiz/result_quiz_cubit.dart';
 import 'package:quiz_app/presentation/pages/home/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Dependencies.setupDependencies();
   runApp(
     MultiBlocProvider(
       providers: [
