@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/core/widget/common_action_button.dart';
+import 'package:quiz_app/presentation/bloc/quiz/quiz_cubit.dart';
 import 'package:quiz_app/presentation/pages/history/history_page.dart';
 import 'package:quiz_app/presentation/pages/question/question_page.dart';
 
@@ -27,6 +29,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 40),
               CommonActionButton(
                 onPressed: () {
+                  context.read<QuizCubit>().resetQuiz();
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const QuestionPage()),
