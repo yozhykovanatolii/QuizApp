@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/presentation/bloc/result_quiz/result_quiz_cubit.dart';
 import 'package:quiz_app/presentation/bloc/result_quiz/result_quiz_state.dart';
+import 'package:quiz_app/presentation/pages/history/widget/history_progress_indicator.dart';
 import 'package:quiz_app/presentation/pages/history/widget/result_list_tile.dart';
+import 'package:quiz_app/presentation/pages/history/widget/results_error_text.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -35,14 +37,8 @@ class _HistoryPageState extends State<HistoryPage> {
       body: BlocBuilder<ResultQuizCubit, ResultQuizState>(
         builder: (context, state) {
           if (state is ResultQuizFailureState) {
-            return Center(
-              child: Text(
-                state.errorMessage,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+            return ResultsErrorText(
+              errorMessage: state.errorMessage,
             );
           }
           if (state is ResultQuizSuccessState) {
@@ -59,14 +55,7 @@ class _HistoryPageState extends State<HistoryPage> {
               },
             );
           }
-          return Center(
-            child: Transform.scale(
-              scale: 1.2,
-              child: const CircularProgressIndicator(
-                color: Colors.blue,
-              ),
-            ),
-          );
+          return const HistoryProgressIndicator();
         },
       ),
     );
