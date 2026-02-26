@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app/presentation/bloc/quiz/quiz_cubit.dart';
+import 'package:quiz_app/presentation/bloc/result_quiz/result_quiz_cubit.dart';
 import 'package:quiz_app/presentation/pages/home/home_page.dart';
 
 void main() {
@@ -8,6 +9,7 @@ void main() {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => QuizCubit()),
+        BlocProvider(create: (_) => ResultQuizCubit()),
       ],
       child: const QuizApp(),
     ),

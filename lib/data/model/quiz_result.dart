@@ -24,7 +24,7 @@ class QuizResult {
   factory QuizResult.fromMap(Map<String, dynamic> map) {
     return QuizResult(
       completedAt: DateTime.parse(map['completedAt']),
-      totalCorrectAnswers: map['correctAnswers'],
+      totalCorrectAnswers: map['totalCorrectAnswers'],
     );
   }
 

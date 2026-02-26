@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ResultListTile extends StatelessWidget {
-  const ResultListTile({super.key});
+  final String completedAtText;
+  final String scoreText;
+
+  const ResultListTile({
+    super.key,
+    required this.completedAtText,
+    required this.scoreText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +22,16 @@ class ResultListTile extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        onTap: () {},
-        title: const Text(
-          '15.02.2026',
-          style: TextStyle(
+        title: Text(
+          completedAtText,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),
-        trailing: const Text(
-          'Score: 4/5',
-          style: TextStyle(
+        trailing: Text(
+          scoreText,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
