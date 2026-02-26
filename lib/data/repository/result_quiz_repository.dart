@@ -12,4 +12,8 @@ class ResultQuizRepository {
     );
     await _resultQuizSharedPreferences.saveQuizResult(quizResult);
   }
+
+  Future<List<QuizResult>> loadQuizResults() async {
+    return await _resultQuizSharedPreferences.loadQuizResults();
+  }
 }

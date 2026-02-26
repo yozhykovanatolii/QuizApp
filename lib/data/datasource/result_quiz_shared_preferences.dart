@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:quiz_app/core/exception/quiz_results_not_found_exception.dart';
 import 'package:quiz_app/data/model/quiz_result.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +15,8 @@ class ResultQuizSharedPreferences {
   }
 
   Future<List<QuizResult>> loadQuizResults() async {
-    final jsonList = (await _sharedPreferences).getStringList(_key) ?? [];
+    final jsonList = (await _sharedPreferences).getStringList(_key);
+    if (jsonList == null) throw QuizResultsNotFoundException();
     return jsonList.map((e) => QuizResult.fromMap(json.decode(e))).toList();
   }
 }
