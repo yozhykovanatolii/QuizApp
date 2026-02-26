@@ -36,9 +36,11 @@ class QuestionPage extends StatelessWidget {
           ),
           body: SafeArea(
             minimum: const EdgeInsets.symmetric(horizontal: 30),
-            child: Center(
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                key: ValueKey(state.currentIndex),
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     question.text,
