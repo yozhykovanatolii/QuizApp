@@ -5,11 +5,14 @@ import 'package:quiz_app/data/repository/result_quiz_repository.dart';
 import 'package:quiz_app/presentation/bloc/quiz/quiz_state.dart';
 
 class QuizCubit extends Cubit<QuizState> {
-  final QuizRepository _quizRepository = QuizRepository();
-  final ResultQuizRepository _resultQuizRepository = ResultQuizRepository();
+  final QuizRepository quizRepository;
+  final ResultQuizRepository resultQuizRepository;
   List<Question> questions = [];
 
-  QuizCubit() : super(QuizState.initial());
+  QuizCubit(
+    this.quizRepository,
+    this.resultQuizRepository,
+  ) : super(QuizState.initial());
 
   Future<void> selectAnswer(String answer) async {
     final currentQuestion = questions[state.currentIndex];
@@ -24,7 +27,7 @@ class QuizCubit extends Cubit<QuizState> {
     }
 
     if (state.currentIndex + 1 >= questions.length) {
-      await _resultQuizRepository.saveQuizResult(updatedTotalCorrectAnswers);
+      await resultQuizRepository.saveQuizResult(updatedTotalCorrectAnswers);
       emit(
         state.copyWith(
           totalCorrectAnswers: updatedTotalCorrectAnswers,
@@ -43,7 +46,7 @@ class QuizCubit extends Cubit<QuizState> {
   }
 
   void resetQuiz() {
-    questions = _quizRepository.loadQuestionsForQuiz();
+    questions = quizRepository.loadQuestionsForQuiz();
     emit(QuizState.initial());
   }
 }
